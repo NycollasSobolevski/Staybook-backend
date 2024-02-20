@@ -7,5 +7,6 @@ router
     .post('/getAll', RoomController.GetAll)
     .post('/get', RoomController.GetRange)
     .post('/getRoom', RoomController.GetRoom)
+    .get('/Batatata', RoomController.Batata)
 
 module.exports = router;
