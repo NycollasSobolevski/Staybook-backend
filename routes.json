@@ -1,0 +1,98 @@
+// Retorna um jwt do usuário e se esse usuário foi validado
+// http://localhost:8080/api/auth/login
+{
+    "email": "lastname",
+    "password": "blabla"
+}
+
+// Cadastra o usuário no banco de dados
+// http://localhost:8080/api/auth/register
+{
+    "username": "name",
+    "email": "lastname",
+    "password": "blabla"
+}
+
+// Cria um token de validação de email para o usuário e envia o código para seu respectivo email
+// http://localhost:8080/api/token/new
+{
+    "jwtUser": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
+}
+
+// Compara o token do usuário e atualiza o banco de dados, validando o usuário
+// http://localhost:8080/api/token/compare
+{
+    "code": "12345",
+    "jwtUser":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
+}
+
+// Cria um quarto 
+// http://localhost:8080/api/room/
+{
+    "title": "O melhor quarto do mundo",
+    "capacity": 3,
+    "doubleBed": 1,
+    "singleBed": 1,
+    "price": 348,
+    "rate": 4.75,
+    "hotel": "654152ec3e4d2b790c582f60",
+    "description": "asdhsaudasd adawd a lorem",
+    "category": ["wifi", "petfriendly", "gourmet"],
+    "image": ["url...", "url...", "url..."],
+    "available": true
+}
+
+// Retorna todos os quartos
+// http://localhost:8080/api/room/getAll {}
+
+// Retorna os quartos dentro de um range específico
+// http://localhost:8080/api/room/get 
+{
+    "start": 0,
+    "end": 10
+}
+
+// Retorna o quarto que corresponde ao código enviado
+// http://localhost:8080/api/room/getRoom
+{
+    "code": "1234"
+} 
+
+// Cria um hotel
+// http://localhost:8080/api/hotel/
+{
+    "title": "hotel bala",
+    "description": "lorem",
+    "rate": 4.75,
+    "tags": ["luxury", "petfriendly", "gourmet"],
+    "contact": ["41-951321", "email@louco.com"],
+    "image": ["url", "url"],
+    "location": ["pr", "curitiba", "paraná", "brasil"]
+}
+
+// Retorna todos os hoteis
+// http://localhost:8080/api/hotel/getAll {}
+
+// Retorna os hoteis dentro de um range específico
+// http://localhost:8080/api/hotel/get 
+{
+    "start": 0,
+    "end": 10
+}
+
+// Cria uma reserva
+// http://localhost:8080/api/booking/
+{
+    "startDate": "14/12/2092",
+    "endDate": "24/05/2093",
+    "user": "{userId}",
+    "numberAdults": 5,
+    "numberChildren": 2,
+    "rooms": ["1232", "1231"]
+}
+
+// Retorna reservas do usuário
+// http://localhost:8080/api/booking/getBookings
+{
+    "jwtUser": "ausdiadkjadoi.awldn2andoisjopalnd1@a.dsadsasdsad"
+}

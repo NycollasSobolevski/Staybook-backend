@@ -1,0 +1,6 @@
+npm install
+npm install nodemailer
+npm i axios dotenv
+npm i googleapis nodemailer
+npm install sendmail
+npm install mailtrap
