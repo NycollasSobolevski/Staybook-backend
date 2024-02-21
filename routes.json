@@ -1,3 +1,6 @@
+npm ci && yarn
+node index.js
+
 // Retorna um jwt do usuário e se esse usuário foi validado
 // http://localhost:8080/api/auth/login
 {

@@ -15,7 +15,7 @@ const User = mongoose.model('User', {
         required: false
     },
     purchases: {
-        type:[Package],
+        type:[String],
         required: false
     }
 })
