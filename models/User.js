@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
-const Package = require('./Package');
 
 const User = mongoose.model('User', {
-    username: String,
     email: String,
+    username: String,
     password: String,
     validated: Boolean,
     favorites: {

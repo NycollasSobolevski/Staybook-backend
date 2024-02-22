@@ -1,13 +1,14 @@
 const mongoose = require('mongoose');
-const Attraction = require('./Attraction');
 
 const Package = mongoose.model('Package', {
-    name: String,
+    title: String,
     details: String,
-    ticket: String,
-    booking: String,
     price: Number,
-    attractions: {
+    bought: Date,
+    ticket: [Object],
+    booking: [Object],
+    attractions: [Object],
+    tags: {
         type:[String],
         required: false
     },
@@ -15,7 +16,10 @@ const Package = mongoose.model('Package', {
         type:[String],
         required: true
     },
-    bought: Date
+    relevantClients: {
+        type: [String],
+        required: false
+    }
 })
  
 module.exports = Package;

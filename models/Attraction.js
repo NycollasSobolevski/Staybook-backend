@@ -1,10 +1,19 @@
 const mongoose = require('mongoose');
 
 const Attraction = mongoose.model('Attraction', {    
-    Name: String,
     price: Number,
+    name: String,
     details: String,
+    attractionLocal: String,
     image: {
+        type: [String],
+        required: false
+    },
+    tags: {
+        type: [String],
+        required: false
+    },
+    relevantClients: {
         type: [String],
         required: false
     }
