@@ -26,7 +26,7 @@ const Hotel = mongoose.model('Hotel', {
         required: true
     },
     relevantClients: {
-        type: [string],
+        type: [String],
         required: false
     }
 });

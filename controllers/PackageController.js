@@ -8,7 +8,7 @@ class PackageController{
             return res.status(400).send({ message: "One or more elements were not provided" });
         }
     
-        const package = new Package({
+        const pack = new Package({
             title: title,
             details: details,
             price: price,
@@ -22,7 +22,7 @@ class PackageController{
         });
     
         try {
-            await package.save();
+            await pack.save();
             return res.status(201).send({ message: "Package created successfully" });
         } catch (error) {
             return res.status(500).send({ message: "Something failed" });
@@ -32,11 +32,11 @@ class PackageController{
     static async GetPackageById(req, res) {
         const { id } = req.params;
         try {
-            const package = await Package.findById(id);
-            if (!package) {
+            const pack = await Package.findById(id);
+            if (!pack) {
                 return res.status(404).send({ message: "Package not found" });
             }
-            return res.status(200).send(package);
+            return res.status(200).send(pack);
         } catch (error) {
             return res.status(500).send({ message: "Something failed" });
         }
@@ -45,7 +45,7 @@ class PackageController{
     static async GetPackagesWithPagination(req, res) {
         const { page = 1, limit = 15 } = req.query;
         try {
-            const packages = await Package.find()
+            const packs = await Package.find()
                 .limit(limit * 1)
                 .skip((page - 1) * limit)
                 .exec();
@@ -53,7 +53,7 @@ class PackageController{
             const count = await Package.countDocuments();
     
             return res.status(200).json({
-                packages,
+                packs,
                 totalPages: Math.ceil(count / limit),
                 currentPage: page
             });
@@ -72,7 +72,7 @@ class PackageController{
                 query = { tags: { $in: tagArray } };
             }
     
-            const packages = await Package.find(query)
+            const packs = await Package.find(query)
                 .limit(limit * 1)
                 .skip((page - 1) * limit)
                 .exec();
@@ -80,7 +80,7 @@ class PackageController{
             const count = await Package.countDocuments(query);
     
             return res.status(200).json({
-                packages,
+                packs,
                 totalPages: Math.ceil(count / limit),
                 currentPage: page
             });
@@ -94,7 +94,7 @@ class PackageController{
         const { title, details, price, bought, ticket, booking, attractions, tags, images, relevantClients } = req.body;
     
         try {
-            const package = await Package.findByIdAndUpdate(id, {
+            const pack = await Package.findByIdAndUpdate(id, {
                 title: title,
                 details: details,
                 price: price,
@@ -107,7 +107,7 @@ class PackageController{
                 relevantClients: relevantClients
             });
     
-            if (!package) {
+            if (!pack) {
                 return res.status(404).send({ message: "Package not found" });
             }
     
@@ -121,9 +121,9 @@ class PackageController{
         const { id } = req.params;
     
         try {
-            const package = await Package.findByIdAndDelete(id);
+            const pack = await Package.findByIdAndDelete(id);
     
-            if (!package) {
+            if (!pack) {
                 return res.status(404).send({ message: "Package not found" });
             }
     
