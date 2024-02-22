@@ -16,7 +16,10 @@ const User = mongoose.model('User', {
     purchases: {
         type:[String],
         required: false
-    }
+    },
+    // notifications: {
+    //     type:[String]
+    // }
 })
  
 module.exports = User;

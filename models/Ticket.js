@@ -8,7 +8,6 @@ const Ticket = mongoose.model('Ticket', {
     details: String,
     arrival: String,
     departure: String,
-    roundTrip: String,
     arrivalDate: Date,
     departureDate: Date,
     tags: {
