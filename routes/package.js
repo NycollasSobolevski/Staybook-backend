@@ -5,8 +5,8 @@ const PackageController = require('../controllers/PackageController');
 router
     .post('/', PackageController.CreatePackage)
     .get('/', PackageController.GetPackageById)
-    .get('/pagination', PackageController.GetPackagesWithPagination)
-    .get('/filteredPagination', PackageController.GetPackagesWithPaginationAndTags)
+    .get('/:page&:limit', PackageController.GetPackagesWithPagination)
+    .get('/:page&:limit&:tags', PackageController.GetPackagesWithPaginationAndTags)
     .patch('/', PackageController.UpdatePackage)
     .delete('/', PackageController.DeletePackage)
 

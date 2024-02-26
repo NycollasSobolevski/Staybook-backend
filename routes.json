@@ -19,14 +19,14 @@ node index.js
 // Cria um token de validação de email para o usuário e envia o código para seu respectivo email
 // http://localhost:8080/api/token/new
 {
-    "jwtUser": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
+    "userJwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
 }
 
 // Compara o token do usuário e atualiza o banco de dados, validando o usuário
 // http://localhost:8080/api/token/compare
 {
     "code": "12345",
-    "jwtUser":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
+    "userJwt":  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1M2E5Y2MzYjlhYTAzZmZkNDk3Yzc0NiIsImlhdCI6MTY5ODM0MDA2MywiZXhwIjoxNjk4NTEyODYzfQ.G0gH-hNhJeT_-d7wckB2SA4F7lxJIMSKc_S2WSKU0NE"
 }
 
 // Cria um quarto 
@@ -97,5 +97,5 @@ node index.js
 // Retorna reservas do usuário
 // http://localhost:8080/api/booking/getBookings
 {
-    "jwtUser": "ausdiadkjadoi.awldn2andoisjopalnd1@a.dsadsasdsad"
+    "userJwt": "ausdiadkjadoi.awldn2andoisjopalnd1@a.dsadsasdsad"
 }

@@ -17,9 +17,7 @@ const User = mongoose.model('User', {
         type:[String],
         required: false
     },
-    // notifications: {
-    //     type:[String]
-    // }
+    notifications: [Object]
 })
  
 module.exports = User;

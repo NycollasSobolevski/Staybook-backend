@@ -5,10 +5,7 @@ const Hotel = mongoose.model('Hotel', {
     title: String,
     description: String,
     rate: Number,
-    tags: {
-        type:[String],
-        required: true
-    },
+    tags: [Object],
     rooms: {
         type:[Room.schema],
         required: false

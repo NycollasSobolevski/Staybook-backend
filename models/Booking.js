@@ -6,6 +6,7 @@ const Booking = mongoose.model('Booking', {
     user: String,
     numberChildren: Number,
     numberAdults: Number,
+    tags: [Object],
     rooms: {
         type:[String],
         required: true

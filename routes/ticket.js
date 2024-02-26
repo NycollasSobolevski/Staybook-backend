@@ -10,5 +10,3 @@ router
     .delete('/:id', TicketController.DeleteTicket)
 
 module.exports = router;
-
-// funcionando ok

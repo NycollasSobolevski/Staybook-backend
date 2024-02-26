@@ -36,7 +36,8 @@ class HotelController {
     }
 
     static async GetRange(req, res) {
-        const { start, end } = req.body;
+        const { start } = req.headers['start'];
+        const { end } = req.headers['end'];
         
         if (!start || !end)
             return res.status(400).send({ message: "Mandatory information not provided" });

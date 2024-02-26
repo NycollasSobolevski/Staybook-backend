@@ -10,10 +10,7 @@ const Ticket = mongoose.model('Ticket', {
     departure: String,
     arrivalDate: Date,
     departureDate: Date,
-    tags: {
-        type:[String],
-        required: true
-    }
+    tags: [Object]
 })
  
 module.exports = Ticket;

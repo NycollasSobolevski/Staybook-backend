@@ -20,10 +20,13 @@ The application is made using react native for the frontend and nodejs for the b
 #### Start Project
 
 Frontend
+
 ```
     npx expo start
 ```
+
 Backend
+
 ```
     npm start run
 ```
@@ -36,10 +39,10 @@ Backend
   http://localhost:8080/api/auth/login
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `email` | `string` | 
-| `password` | `string` | 
+| Parameter  | Type     |
+| :--------- | :------- |
+| `email`    | `string` |
+| `password` | `string` |
 
 #### Cadastra o usuário no banco de dados
 
@@ -47,10 +50,10 @@ Backend
   http://localhost:8080/api/auth/register
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `username` | `string` | 
-| `email` | `string` | 
+| Parameter  | Type     |
+| :--------- | :------- |
+| `username` | `string` |
+| `email`    | `string` |
 | `password` | `string` |
 
 #### Cria um token de validação de email para o usuário e envia o código para seu respectivo email
@@ -59,10 +62,9 @@ Backend
   http://localhost:8080/api/token/new
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `jwtUser` | `string` | 
-
+| Parameter | Type     |
+| :-------- | :------- |
+| `userJwt` | `string` |
 
 #### Compara o token do usuário e atualiza o banco de dados, validando o usuário
 
@@ -70,10 +72,10 @@ Backend
   http://localhost:8080/api/token/compare
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `code` | `string` | 
-| `jwtUser` | `string` | 
+| Parameter | Type     |
+| :-------- | :------- |
+| `code`    | `string` |
+| `userJwt` | `string` |
 
 #### Cria um quarto
 
@@ -81,19 +83,19 @@ Backend
   http://localhost:8080/api/room/
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `title` | `string` | 
-| `capacity` | `number` | 
-| `doubleBed` | `number` | 
-| `singleBed` | `number` | 
-| `price` | `number` | 
-| `rate` | `number` | 
-| `hotel` | `string` |
-| `description` | `string` | 
-| `category` | `[string]` |
-| `image` | `[string]` |
-| `available` | `boolean` |
+| Parameter     | Type       |
+| :------------ | :--------- |
+| `title`       | `string`   |
+| `capacity`    | `number`   |
+| `doubleBed`   | `number`   |
+| `singleBed`   | `number`   |
+| `price`       | `number`   |
+| `rate`        | `number`   |
+| `hotel`       | `string`   |
+| `description` | `string`   |
+| `category`    | `[string]` |
+| `image`       | `[string]` |
+| `available`   | `boolean`  |
 
 #### Retorna todos os quartos
 
@@ -104,13 +106,13 @@ Backend
 #### Retorna os quartos dentro de um range específico
 
 ```http
-  http://localhost:8080/api/room/get 
+  http://localhost:8080/api/room/get
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `start` | `number` | 
-| `end` | `number` | 
+| Parameter | Type     |
+| :-------- | :------- |
+| `start`   | `number` |
+| `end`     | `number` |
 
 #### Retorna o quarto que corresponde ao código enviado
 
@@ -118,9 +120,9 @@ Backend
   http://localhost:8080/api/room/getRoom
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `code` | `string` | 
+| Parameter | Type     |
+| :-------- | :------- |
+| `code`    | `string` |
 
 #### Cria um hotel
 
@@ -128,15 +130,15 @@ Backend
   http://localhost:8080/api/hotel/
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `title` | `string` | 
-| `description` | `string` | 
-| `rate` | `number` | 
-| `tags` | `[string]` | 
-| `contact` | `[string]` | 
-| `image` | `[string]` | 
-| `location` | `[string]` | 
+| Parameter     | Type       |
+| :------------ | :--------- |
+| `title`       | `string`   |
+| `description` | `string`   |
+| `rate`        | `number`   |
+| `tags`        | `[string]` |
+| `contact`     | `[string]` |
+| `image`       | `[string]` |
+| `location`    | `[string]` |
 
 #### Retorna todos os hoteis
 
@@ -147,13 +149,13 @@ Backend
 #### Retorna os hoteis dentro de um range específico
 
 ```http
-  http://localhost:8080/api/hotel/get 
+  http://localhost:8080/api/hotel/get
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `start` | `number` | 
-| `end` | `number` |
+| Parameter | Type     |
+| :-------- | :------- |
+| `start`   | `number` |
+| `end`     | `number` |
 
 #### Cria uma reserva
 
@@ -161,19 +163,18 @@ Backend
   http://localhost:8080/api/booking/
 ```
 
-| Parameter | Type     | 
-| :-------- | :------- | 
-| `startDate` | `string` | 
-| `endDate` | `string` | 
-| `user` | `string` | 
-| `numberAdults` | `number` | 
-| `numberChildren` | `number` | 
-| `roooms` | `[string]` |
+| Parameter        | Type       |
+| :--------------- | :--------- |
+| `startDate`      | `string`   |
+| `endDate`        | `string`   |
+| `user`           | `string`   |
+| `numberAdults`   | `number`   |
+| `numberChildren` | `number`   |
+| `roooms`         | `[string]` |
 
 ## References
 
- - [Figma](https://www.figma.com/file/C1tbOsJ6RkFcd9IiVwERDq/StayBook?type=design&node-id=0%3A1&mode=design&t=EENO6ANqgxMt6kt1-1)
-
+- [Figma](https://www.figma.com/file/C1tbOsJ6RkFcd9IiVwERDq/StayBook?type=design&node-id=0%3A1&mode=design&t=EENO6ANqgxMt6kt1-1)
 
 ## Authors
 

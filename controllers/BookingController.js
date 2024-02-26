@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 
 class BookingController {
     static async Create(req, res) {
-        const { startDate, endDate, user, numberChildren, numberAdults, rooms } = req.body;
+        const { tags, startDate, endDate, user, numberChildren, numberAdults, rooms } = req.body;
 
         if (!startDate || !endDate || !user || !numberChildren || !numberAdults || !rooms)
             return res.status(400).send({ message: "Mandatory information not provided" });
@@ -15,7 +15,8 @@ class BookingController {
             user: user,
             numberAdults: numberAdults,
             numberChildren: numberChildren,
-            rooms: rooms
+            rooms: rooms,
+            tags: tags
         });
 
         try {
@@ -33,14 +34,14 @@ class BookingController {
     }
 
     static async GetUser(req, res) {
-        const { jwtUser } = req.body;
+        const { userJwt } = req.params;
         const secret = process.env.SECRET;
 
-        if(!jwtUser) 
+        if(!userJwt) 
             return res.status(400)
                 .send({ message: "Jwt not provided" })
 
-        var user = jwt.verify(jwtUser, secret);
+        var user = jwt.verify(userJwt, secret);
 
         try {
             var bookings = await Booking.find({ "user": user.id });

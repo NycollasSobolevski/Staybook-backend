@@ -9,14 +9,8 @@ const Attraction = mongoose.model('Attraction', {
         type: [String],
         required: false
     },
-    tags: {
-        type: [String],
-        required: false
-    },
-    relevantClients: {
-        type: [String],
-        required: false
-    }
+    tags: [Object],
+    relevantClients: [Object]
 });
 
 module.exports = Attraction;

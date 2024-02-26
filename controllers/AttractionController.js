@@ -41,7 +41,7 @@ class AttractionController{
     }
 
     static async DeleteAttraction(req, res) {
-        const { id } = req.params;
+        const id = req.headers['id'];
     
         try {
             const attraction = await Attraction.findByIdAndDelete(id);
@@ -57,7 +57,7 @@ class AttractionController{
     }
 
     static async UpdateAttraction(req, res) {
-        const { id } = req.params;
+        const id = req.headers['id'];
         const { name, price, details, image, attractionLocal, tags, relevantClients } = req.body;
     
         try {
