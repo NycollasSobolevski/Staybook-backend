@@ -1,7 +1,7 @@
 const Notification = require('../models/Notification');
 
 const WebSocket = require('ws');
-const wss = new WebSocket.Server({ port: 8080 });
+const wss = new WebSocket.Server({ port: 8081 });
 
 wss.on('connection', (ws) => {
     console.log('Cliente conectado');
@@ -15,10 +15,16 @@ wss.on('connection', (ws) => {
             message
         });
 
-        await newNotification.save();
+        try {
+            await newNotification.save()
+            
+        } catch (error) {
+           console.log(error.message)
+        };
 
         // Transmitir a nova notificação para todos os clientes
         wss.clients.forEach((client) => {
+            console.log(client)
             if (client.readyState === WebSocket.OPEN) {
                 // Aqui você decide o que exatamente quer enviar
                 client.send(JSON.stringify(newNotification));
