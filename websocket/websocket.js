@@ -2,6 +2,15 @@ const socketIO = require('socket.io');
 
 function setupWebSocket(server) {
   const io = socketIO(server);
+  if(io)
+  {
+    console.log('Socket.io server is running');
+  }
+
+  if(io.on){
+    console.log("aaaaa")
+  }
+
 
   io.on('connection', (socket) => {
     console.log('Um usuário se conectou');
