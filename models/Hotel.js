@@ -25,6 +25,10 @@ const Hotel = mongoose.model('Hotel', {
         type:[String],
         required: true
     },
+    relevantClients: {
+        type: [String],
+        required: false
+    }
 });
 
 module.exports = Hotel;

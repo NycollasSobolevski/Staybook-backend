@@ -1,15 +1,16 @@
 const mongoose = require('mongoose');
 
 const Room = mongoose.model('Room', {
-    title: String,
     code: String,
+    title: String,
+    hotel: String,
+    description: String,
+    rate: Number,
+    price: Number,
     capacity: Number,
     doubleBed: Number,
     singleBed: Number,
-    price: Number,
-    rate: Number,
-    hotel: String,
-    description: String,
+    available: Boolean,
     location: {
         type:[String],
         required: false
@@ -21,8 +22,7 @@ const Room = mongoose.model('Room', {
     image: {
         type:[String],
         required: true
-    },
-    available: Boolean
+    }
 });
 
 module.exports = Room;

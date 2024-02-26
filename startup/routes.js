@@ -4,6 +4,9 @@ const room = require('../routes/room');
 const token = require('../routes/token');
 const hotel = require('../routes/hotel');
 const booking = require('../routes/booking');
+const attraction = require('../routes/attraction');
+const package = require('../routes/package');
+const ticket = require('../routes/ticket');
 
 module.exports = function(app) {
     app.use(express.json());
@@ -12,4 +15,7 @@ module.exports = function(app) {
     app.use('/api/room', room);
     app.use('/api/hotel', hotel);
     app.use('/api/booking', booking);
+    app.use('/api/attraction', attraction);
+    app.use('/api/package', package);
+    app.use('/api/ticket', ticket);
 }

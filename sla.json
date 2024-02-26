@@ -1,0 +1,34 @@
+{
+    "alltickets":[
+        {
+            "details": "String",
+            "seat": "String",
+            "arrivalDate": "Date",
+            "departureDate": "Date",
+            "arrival": "String",
+            "departure": "String",
+            "tags": {
+                "type":["String"],
+                "required": "true"
+            },
+            "price": "Number",
+            "type": "String",
+            "title": "String"
+        },
+        {
+            "details": "String",
+            "seat": "100",
+            "arrivalDate": "10-05-2021",
+            "departureDate": "Date",
+            "arrival": "String",
+            "departure": "String",
+            "tags": {
+                "type":["String"],
+                "required": "true"
+            },
+            "price": "Number",
+            "type": "String",
+            "title": "String"
+        }
+    ]
+}
