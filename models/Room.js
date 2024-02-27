@@ -11,18 +11,10 @@ const Room = mongoose.model('Room', {
     doubleBed: Number,
     singleBed: Number,
     available: Boolean,
-    location: {
-        type:[String],
-        required: false
-    },
-    category: {
-        type:[String],
-        required: true
-    },
-    image: {
-        type:[String],
-        required: true
-    }
+    tags: [Object],
+    location: [String],
+    category: [String],
+    image: [String]
 });
 
 module.exports = Room;
