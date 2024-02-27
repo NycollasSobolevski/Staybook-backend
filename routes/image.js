@@ -1,10 +1,10 @@
-// const express = require('express');
-// const AuthController = require('../controllers/AuthController');
-// const router = express.Router();
+const express = require('express');
+const ImageController = require('../controllers/ImageController');
+const router = express.Router();
  
-// router
-//     .post('/register', AuthController.Register)
-//     .post('/login', AuthController.Login)
-//     .get('/test', AuthController.Test)
+router
+    // .post('/register', ImageController.Register)
+    // .post('/login', ImageController.Login)
+    // .get('/test', ImageController.Test)
  
-// module.exports = router;
+module.exports = router;

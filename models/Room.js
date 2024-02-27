@@ -12,7 +12,7 @@ const Room = mongoose.model('Room', {
     singleBed: Number,
     available: Boolean,
     tags: [Object],
-    location: [String],
+    location: Object,
     category: [String],
     image: [String]
 });

@@ -5,6 +5,7 @@ const Hotel = mongoose.model('Hotel', {
     title: String,
     description: String,
     rate: Number,
+    startingPrice: Number,
     tags: [Object],
     rooms: [Object],      
     contact: {
@@ -15,10 +16,7 @@ const Hotel = mongoose.model('Hotel', {
         type:[String],
         required: true
     },
-    location: {
-        type:[String],
-        required: true
-    },
+    location: [Object],
     relevantClients: {
         type: [String],
         required: false

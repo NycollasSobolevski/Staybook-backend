@@ -6,8 +6,8 @@ const Ticket = mongoose.model('Ticket', {
     type: String,
     title: String,
     details: String,
-    arrival: String,
-    departure: String,
+    arrival: Object,
+    departure: Object,
     arrivalDate: Date,
     departureDate: Date,
     tags: [Object]

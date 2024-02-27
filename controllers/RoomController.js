@@ -34,6 +34,12 @@ class RoomController {
             await room.save()
             try {
                 await Hotel.findByIdAndUpdate(hotel, { "$push": { rooms: room } });
+                
+                let currentHotel = await Hotel.findById(hotel);
+                var newStartingPrice = Math.min(...currentHotel.rooms.map(room => room.price));
+
+                await Hotel.findByIdAndUpdate(hotel, { "$set": { startingPrice: newStartingPrice} });
+                
             } catch (error) {
                 return res.status(500).send({ error: error });    
             }
