@@ -5,18 +5,18 @@ class RoomController {
     static async Create(req, res) {
         const { capacity, doubleBed, singleBed, price, 
             rate, hotel, description, category, 
-            image, available, title, tags  } = req.body;
+            image, available, title, tags, code  } = req.body;
 
         if (isNaN(capacity) || isNaN(doubleBed) || isNaN(singleBed) || isNaN(price) || isNaN(rate) || 
-            !hotel || !description || !image || !available || !category || !title)
+            !hotel || !description || !image || !code || !available || !category || !title)
             return res.status(400).send({ message: "Mandatory information not provided" });
 
-        const roomCode = (await Room.count() + 1).toString();
         const queryHotel = await Hotel.findById(hotel);
+        
         const room = new Room({
             title: title,
             tags: tags,
-            code: roomCode, 
+            code: code, 
             capacity: capacity,
             doubleBed: doubleBed,
             singleBed: singleBed,
@@ -39,7 +39,7 @@ class RoomController {
                 var newStartingPrice = Math.min(...currentHotel.rooms.map(room => room.price));
 
                 await Hotel.findByIdAndUpdate(hotel, { "$set": { startingPrice: newStartingPrice} });
-                
+
             } catch (error) {
                 return res.status(500).send({ error: error });    
             }

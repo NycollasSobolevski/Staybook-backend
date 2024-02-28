@@ -10,7 +10,8 @@ const Ticket = mongoose.model('Ticket', {
     departure: Object,
     arrivalDate: Date,
     departureDate: Date,
-    tags: [Object]
+    tags: [Object],
+    roundTrip: String
 })
  
 module.exports = Ticket;

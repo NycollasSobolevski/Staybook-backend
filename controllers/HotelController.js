@@ -36,44 +36,48 @@ class HotelController {
     }
 
     static async GetHotelsWithPaginationAndTags(req, res) {
-        const { page } = req.headers['page'];
-        const { limit } = req.headers['limit'];
+        const { page, limit } = req.headers
         const { tags } = req.body;
+
+        const tagArray = tags.length < 1 ? [""] : tags;
         
-        const tagArray = tags ? tags.split(",") : [];
-    
+        if (!tags)
+            return res.status(400).send({ message: "Information not provided" });
+
         try {
             let query = {};
             if (tagArray.length > 0) {
                 query = {
                     $or: [
-                        { location: { $in: tagArray } },
-                        { tags: { $in: tagArray } }
+                        { 'location.City': { $in: tagArray } },
+                        { 'location.Country': { $in: tagArray } },
+                        { 'location.Address': { $in: tagArray } },
+                        { 'location.State': { $in: tagArray } },
+                        { 'tags.name': { $in: tagArray } }
                     ]
                 };
             }
-    
-            const packs = await Package.find(query)
+            
+            const hotels = await Hotel.find(query)
                 .limit(limit * 1)
                 .skip((page - 1) * limit)
                 .exec();
     
-            const count = await Package.countDocuments(query);
+            const count = await Hotel.countDocuments(query);
     
             return res.status(200).json({
-                packs,
+                hotels,
                 totalPages: Math.ceil(count / limit),
                 currentPage: page
             });
         } catch (error) {
-            return res.status(500).send({ message: "Something failed" });
+            return res.status(500).send({ message: error });
         }
     }
 
     static async GetRange(req, res) {
-        const { page } = req.headers['page'];
-        const { limit } = req.headers['limit'];
-        
+        const { page, limit } = req.headers
+
         if (!page || !limit)
             return res.status(400).send({ message: "Mandatory information not provided" });
 

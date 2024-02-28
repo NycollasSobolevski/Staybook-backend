@@ -4,7 +4,7 @@ const { ObjectId } = require("bson");
 
 class TicketController{
     static async CreateTicket(req, res) {
-        const { price, seat, type, details, arrival, departure, title, arrivalDate, departureDate, tags } = req.body;
+        const { price, roundTrip, seat, type, details, arrival, departure, title, arrivalDate, departureDate, tags } = req.body;
 
         if (!title || !details || !price || !arrival || !departure || !seat || !arrivalDate || !departureDate || !type) {
             return res.status(400).send({ message: "One or more elements were not provided" });
@@ -18,6 +18,7 @@ class TicketController{
             arrival: arrival,
             departure: departure,
             seat: seat,
+            roundTrip: roundTrip,
             arrivalDate: arrivalDate,
             departureDate: departureDate,
             tags: tags

@@ -4,7 +4,7 @@ const Attraction = mongoose.model('Attraction', {
     price: Number,
     name: String,
     details: String,
-    attractionLocal: String,
+    attractionLocal: Object,
     image: {
         type: [String],
         required: false
