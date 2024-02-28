@@ -7,6 +7,8 @@ const booking = require('../routes/booking');
 const attraction = require('../routes/attraction');
 const package = require('../routes/package');
 const ticket = require('../routes/ticket');
+const user = require('../routes/user');
+const tag = require('../routes/tags');
 
 module.exports = function(app) {
     app.use(express.json());
@@ -18,4 +20,6 @@ module.exports = function(app) {
     app.use('/api/attraction', attraction);
     app.use('/api/package', package);
     app.use('/api/ticket', ticket);
+    app.use('/api/user', user);
+    app.use('/api/tags', tag);
 }

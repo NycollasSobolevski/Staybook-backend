@@ -4,6 +4,6 @@ const BookingController = require('../controllers/BookingController');
 
 router
     .post('/', BookingController.Create)
-    .post('/getBookings', BookingController.GetUser)
+    .get('/', BookingController.GetUser)
 
 module.exports = router;

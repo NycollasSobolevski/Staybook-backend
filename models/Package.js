@@ -8,10 +8,7 @@ const Package = mongoose.model('Package', {
     ticket: [Object],
     booking: [Object],
     attractions: [Object],
-    tags: {
-        type:[String],
-        required: false
-    },
+    tags: [Object],
     images: {
         type:[String],
         required: true

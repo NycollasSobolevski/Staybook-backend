@@ -4,7 +4,8 @@ const HotelController = require('../controllers/HotelController');
 
 router
     .post('/', HotelController.Create)
-    .post('/getAll', HotelController.GetAll)
-    .post('/get', HotelController.GetRange)
+    .get('/', HotelController.GetAll)
+    .get('/:page&:limit', HotelController.GetRange)
+    .post('/filtered/:page&:limit', HotelController.GetHotelsWithPaginationAndTags)
 
 module.exports = router;

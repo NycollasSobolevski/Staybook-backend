@@ -6,14 +6,11 @@ const Ticket = mongoose.model('Ticket', {
     type: String,
     title: String,
     details: String,
-    arrival: String,
-    departure: String,
+    arrival: Object,
+    departure: Object,
     arrivalDate: Date,
     departureDate: Date,
-    tags: {
-        type:[String],
-        required: true
-    }
+    tags: [Object]
 })
  
 module.exports = Ticket;

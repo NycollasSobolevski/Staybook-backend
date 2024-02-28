@@ -9,9 +9,9 @@ require('dotenv').config();
 
 class TokenController{
     static async CreateToken(req, res){
-        const { jwtUser } = req.body;
+        const { userJwt } = req.body;
 
-        if(!jwtUser) 
+        if(!userJwt) 
             return res.status(400)
                 .send({ message: "Jwt not provided" })
         
@@ -26,7 +26,7 @@ class TokenController{
                 pass: password
             }
             });
-        var user = jwt.verify(jwtUser, secret);
+        var user = jwt.verify(userJwt, secret);
         var currentUser = await User.findById(user.id);
         var tokenCode = (Math.floor(Math.random() * (99999 - 10000 + 1)) + 10000).toString();
         var safeCode = await bcrypt.hash(tokenCode, 12)
@@ -65,20 +65,20 @@ class TokenController{
     
     static async CompareToken(req, res){
         const secret = process.env.SECRET;
-        const { code, jwtUser } = req.body;
+        const { code, userJwt } = req.body;
 
-        if(!code || !jwtUser) 
+        if(!code || !userJwt) 
             return res.status(400)
                 .send({ message: "Code or jwt not provided" })
 
-        var userJwt = jwt.verify(jwtUser, secret);
-        var userToken = await Token.findOne({ "user": userJwt.id });
+        var verifiedUser = jwt.verify(userJwt, secret);
+        var userToken = await Token.findOne({ "user": verifiedUser.id });
 
         try {
             if (await bcrypt.compare(code.toString(), userToken.code) && userToken.expires - Date.now() > 0)
             {
-                await User.findByIdAndUpdate(userJwt.id, { validated: true });
-                await Token.deleteMany({ "user": userJwt.id });
+                await User.findByIdAndUpdate(verifiedUser.id, { validated: true });
+                await Token.deleteMany({ "user": verifiedUser.id });
                 return res.status(200)
                     .send({ message: "User validated successfully" })
             }

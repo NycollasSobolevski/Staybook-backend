@@ -5,8 +5,8 @@ const bcrypt = require('bcryptjs');
 require('dotenv').config();
 
 class AuthController{
-    static async register(req, res){
-        const { username, email, password } = req.body;
+    static async Register(req, res){
+        const { username, email, password, notifications } = req.body;
 
         const passwordHash = await bcrypt.hash(password, 12)
 
@@ -18,7 +18,8 @@ class AuthController{
             username: username,
             email: email,
             password: passwordHash,
-            validated: false
+            validated: false,
+            notifications: notifications
         });
 
         if (await User.findOne({ "email": email }).Count > 0)
@@ -37,17 +38,20 @@ class AuthController{
         }
     }
 
-    static async login(req, res){
-        const { email, password } = req.body;
-        console.log(email + password)
-        if(!email || !password) 
+    static async Login(req, res){
+        const { email, password, username } = req.body;
+        
+        if((!email || !username) || !password) 
             return res.status(400)
-                .send({ message: "Email or password not provided" })
+                .send({ message: "User or password not provided" })
 
         try {
-            const user = await User.findOne({ email })
+            const method = email ?? username;
+
+            const user = await User.findOne({ method })
+
             if(!user)
-                return res.status(400).send({ message: "Invalid Email" })
+                return res.status(400).send({ message: "Invalid user" })
             if(!await bcrypt.compare(password, user.password)){
                 return res.status(400).send({ message: "Invalid password" })
             }
@@ -65,6 +69,9 @@ class AuthController{
         } catch (error) {
             return res.status(500).send({ message: "Something failed" })
         }
+    } 
+    static async Test(req, res){
+        return res.status(200).send({ message: "Batata" })
     } 
 }
 

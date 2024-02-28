@@ -4,8 +4,8 @@ const AttractionController = require('../controllers/AttractionController');
 
 router
     .post('/', AttractionController.CreateAttraction)
-    .delete('/', AttractionController.DeleteAttraction)
-    .patch('/', AttractionController.UpdateAttraction)
-    .get('/', AttractionController.GetAttraction)
+    .delete('/:id', AttractionController.DeleteAttraction)
+    .patch('/:id', AttractionController.UpdateAttraction)
+    .get('/:id', AttractionController.GetAttraction)
 
 module.exports = router;

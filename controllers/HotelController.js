@@ -35,15 +35,54 @@ class HotelController {
         }
     }
 
-    static async GetRange(req, res) {
-        const { start, end } = req.body;
+    static async GetHotelsWithPaginationAndTags(req, res) {
+        const { page } = req.headers['page'];
+        const { limit } = req.headers['limit'];
+        const { tags } = req.body;
         
-        if (!start || !end)
+        const tagArray = tags ? tags.split(",") : [];
+    
+        try {
+            let query = {};
+            if (tagArray.length > 0) {
+                query = {
+                    $or: [
+                        { location: { $in: tagArray } },
+                        { tags: { $in: tagArray } }
+                    ]
+                };
+            }
+    
+            const packs = await Package.find(query)
+                .limit(limit * 1)
+                .skip((page - 1) * limit)
+                .exec();
+    
+            const count = await Package.countDocuments(query);
+    
+            return res.status(200).json({
+                packs,
+                totalPages: Math.ceil(count / limit),
+                currentPage: page
+            });
+        } catch (error) {
+            return res.status(500).send({ message: "Something failed" });
+        }
+    }
+
+    static async GetRange(req, res) {
+        const { page } = req.headers['page'];
+        const { limit } = req.headers['limit'];
+        
+        if (!page || !limit)
             return res.status(400).send({ message: "Mandatory information not provided" });
 
         try {
-            var allhotels = await Hotel.find();
-            var filteredHotels = allhotels.slice(start, end);
+            var filteredHotels = await Hotel.find()
+                .limit(limit * 1)
+                .skip((page - 1) * limit)
+                .exec();
+
             return res.status(200).send(filteredHotels);
         } catch (error) {
             return res.status(500).send({ error: "Failed" });

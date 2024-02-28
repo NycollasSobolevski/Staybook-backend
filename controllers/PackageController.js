@@ -43,7 +43,9 @@ class PackageController{
     }
     
     static async GetPackagesWithPagination(req, res) {
-        const { page = 1, limit = 15 } = req.query;
+        const { page } = req.headers['page'];
+        const { limit } = req.headers['limit'];
+
         try {
             const packs = await Package.find()
                 .limit(limit * 1)
@@ -63,7 +65,10 @@ class PackageController{
     }
 
     static async GetPackagesWithPaginationAndTags(req, res) {
-        const { page = 1, limit = 15, tags } = req.query;
+        const { page } = req.headers['page'];
+        const { limit } = req.headers['limit'];
+        const { tags } = req.headers['tags'];
+        
         const tagArray = tags ? tags.split(",") : [];
     
         try {
