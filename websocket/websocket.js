@@ -1,31 +1,40 @@
-const socketIO = require('socket.io');
+const Notification = require('../models/Notification');
+const WebSocket = require('ws');
 
-function setupWebSocket(server) {
-  const io = socketIO(server);
-  if(io)
-  {
-    console.log('Socket.io server is running');
-  }
+function setupWebSocket(wss) {
+  wss.on('connection', (ws) => {
+    console.log('Cliente conectado');
 
-  if(io.on){
-    console.log("aaaaa")
-  }
+    ws.on('message', async (message) => {
+      console.log(`Mensagem recebida: ${message}`);
 
+      // Criar e salvar a notificação
+      const newNotification = new Notification({
+        topic: 'Algum Tópico', // Defina conforme necessário
+        message
+      });
 
-  io.on('connection', (socket) => {
-    console.log('Um usuário se conectou');
+      try {
+        await newNotification.save()
 
-    // Lógica para lidar com mensagens do cliente
-    socket.on('chat message', (msg) => {
-      console.log(`Mensagem do cliente: ${msg}`);
-      // Aqui você pode emitir a mensagem para outros clientes ou fazer o que for necessário
+      } catch (error) {
+        console.log(error.message)
+      };
+
+      // Transmitir a nova notificação para todos os clientes
+      wss.clients.forEach((client) => {
+        console.log(client)
+        if (client.readyState === WebSocket.OPEN) {
+          // Aqui você decide o que exatamente quer enviar
+          client.send(JSON.stringify(newNotification));
+        }
+      });
     });
 
-    // Lógica para lidar com desconexão do cliente
-    socket.on('disconnect', () => {
-      console.log('Um usuário se desconectou');
+    ws.on('close', () => {
+      console.log('Cliente desconectado');
     });
   });
 }
 
-module.exports = { setupWebSocket };
+module.exports = { setupWebSocket }
