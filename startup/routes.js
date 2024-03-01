@@ -9,6 +9,7 @@ const package = require('../routes/package');
 const ticket = require('../routes/ticket');
 const user = require('../routes/user');
 const tag = require('../routes/tags');
+const image = require('../routes/image')
 
 module.exports = function(app) {
     app.use(express.json());
@@ -22,4 +23,5 @@ module.exports = function(app) {
     app.use('/api/ticket', ticket);
     app.use('/api/user', user);
     app.use('/api/tags', tag);
+    app.use('/api/image', image);
 }

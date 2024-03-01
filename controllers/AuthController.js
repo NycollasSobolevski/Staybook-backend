@@ -39,16 +39,14 @@ class AuthController{
     }
 
     static async Login(req, res){
-        const { email, password, username } = req.body;
+        const { userLogin, password } = req.body;
         
-        if((!email || !username) || !password) 
+        if(!userLogin || !password) 
             return res.status(400)
                 .send({ message: "User or password not provided" })
 
         try {
-            const method = email ?? username;
-
-            const user = await User.findOne({ method })
+            const user = await User.findOne({ userLogin })
 
             if(!user)
                 return res.status(400).send({ message: "Invalid user" })
