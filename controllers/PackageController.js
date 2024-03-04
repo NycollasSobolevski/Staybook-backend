@@ -1,4 +1,6 @@
+const { isValidObjectId } = require("mongoose");
 const Package = require("../models/Package");
+const mongoose = require('mongoose');
 
 class PackageController{
     static async CreatePackage(req, res) {
@@ -31,13 +33,19 @@ class PackageController{
 
     static async GetPackageById(req, res) {
         const { id } = req.params;
+    
         try {
             const pack = await Package.findById(id);
+    
+            console.log(pack);
+    
             if (!pack) {
                 return res.status(404).send({ message: "Package not found" });
             }
+    
             return res.status(200).send(pack);
         } catch (error) {
+            console.error(error);
             return res.status(500).send({ message: "Something failed" });
         }
     }
