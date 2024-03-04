@@ -37,8 +37,6 @@ class PackageController{
         try {
             const pack = await Package.findById(id);
     
-            console.log(pack);
-    
             if (!pack) {
                 return res.status(404).send({ message: "Package not found" });
             }

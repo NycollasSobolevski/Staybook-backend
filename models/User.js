@@ -14,7 +14,7 @@ const User = mongoose.model('User', {
         required: false
     },
     purchases: {
-        type:[String],
+        type:[Object],
         required: false
     },
     notifications: [Object]

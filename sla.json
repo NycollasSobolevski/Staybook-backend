@@ -264,7 +264,184 @@ http://localhost:8080/api/package/id/65e6008454d5eda6a1c5c06b
 post
 http://localhost:8080/api/user/purchase
 {
-  [
-    Package
+  "userJwt": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZDc5MjRjYTc5OWQ3N2NmZWUwNmUwNyIsImlhdCI6MTcwOTU3NzM5MywiZXhwIjoxNzA5NzUwMTkzfQ.7QlhC7xzSPbyUtcvh4vX3fucxbJxW9msPl4_D5nOWco",
+  "packages": [
+      {
+  "_id": "65e6008454d5eda6a1c5c06b",
+  "title": "Romantic Getaway Package",
+  "details": "A perfect romantic getaway for two, including a two-night stay in a luxury suite, candlelit dinner, and a city tour.",
+  "price": 499.99,
+  "ticket": [
+      {
+          "id": "65de3dfec7bcd66bcab2f7bf",
+          "price": 350,
+          "seat": "12A",
+          "type": "plane",
+          "details": "Enjoy luxurious comfort in our business class on your way from New York to London.",
+          "arrival": {
+              "City": "London",
+              "State": "England",
+              "Country": "UK",
+              "Address": "Heathrow Airport"
+          },
+          "departure": {
+              "City": "New York",
+              "State": "New York",
+              "Country": "USA",
+              "Address": "JFK International Airport"
+          },
+          "arrivalDate": {
+              "$date": "2024-03-15T08:00:00.000Z"
+          },
+          "departureDate": {
+              "$date": "2024-03-14T16:00:00.000Z"
+          },
+          "tags": [
+              {
+                  "price": 50,
+                  "name": "Extra Legroom",
+                  "details": "Seat with additional space for more comfort."
+              },
+              {
+                  "price": 70,
+                  "name": "Priority Boarding",
+                  "details": "Be among the first to board and settle in your seat."
+              }
+          ]
+      },
+      {
+          "id": "65de3e1ec7bcd66bcab2f7c1",
+          "price": 50,
+          "seat": "21B",
+          "type": "bus",
+          "details": "Fast and comfortable express bus service from Boston to Philadelphia.",
+          "arrival": {
+              "City": "Philadelphia",
+              "State": "Pennsylvania",
+              "Country": "USA",
+              "Address": "Philadelphia Bus Terminal"
+          },
+          "departure": {
+              "City": "Boston",
+              "State": "Massachusetts",
+              "Country": "USA",
+              "Address": "Boston Bus Station"
+          },
+          "arrivalDate": {
+              "$date": "2024-03-20T19:00:00.000Z"
+          },
+          "departureDate": {
+              "$date": "2024-03-20T12:00:00.000Z"
+          },
+          "tags": [
+              {
+                  "price": 10,
+                  "name": "Window Seat",
+                  "details": "Enjoy the view with a window seat."
+              },
+              {
+                  "price": 5,
+                  "name": "USB Charging",
+                  "details": "Each seat comes with a USB charging port."
+              }
+          ],
+          "roundTrip": "65de3dfec7bcd66bcab2f7bf"
+      }
+  ],
+  "booking": [],
+  "attractions": [
+      {
+          "id": "65df6d150f4c0056bb42f22d",
+          "price": 350,
+          "name": "Grand Mountain Expedition",
+          "details": "Embark on an adventure to the summit of the majestic Grand Peak. Experience breathtaking views and thrilling hikes.",
+          "attractionLocal": {
+              "City": "Highland",
+              "State": "Mountainous",
+              "Country": "Adventureland",
+              "Address": "Base Camp Road, Highland"
+          },
+          "image": [
+              "https://images.theoutbound.com/contents/105024/assets/1444348062265?&fit=crop&w=970&q=60"
+          ],
+          "tags": [
+              {
+                  "price": 50,
+                  "name": "All-Inclusive Gear",
+                  "details": "All necessary climbing gear and equipment provided for the expedition."
+              },
+              {
+                  "price": 100,
+                  "name": "Professional Guide",
+                  "details": "Accompanied by a professional mountain guide for safety and direction."
+              },
+              {
+                  "price": 30,
+                  "name": "Photography Package",
+                  "details": "Capture your adventure with a professional photography package."
+              }
+          ],
+          "relevantClients": []
+      },
+      {
+          "id": "65df6d6f0f4c0056bb42f22f",
+          "price": 120,
+          "name": "Historic River Cruise",
+          "details": "Explore the city's history through a relaxing river cruise. Discover landmarks and stories from the comfort of your boat.",
+          "attractionLocal": {
+              "City": "River City",
+              "State": "Riverside",
+              "Country": "Countryview",
+              "Address": "Downtown Dock, River City"
+          },
+          "image": [
+              "https://th-thumbnailer.cdn-si-edu.com/EIDgCR9F70t0DQ-7LQXo63rd2SY=/1000x750/filters:no_upscale():focal(1981x1448:1982x1449)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/00/73/0073e734-8865-40ba-b291-7bf7d6cd8a0c/amakristina_fr_avignon.png",
+              "https://www.travelandleisure.com/thmb/dxNuRGHjbsCkpHtq7xHFvnSyTmE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/viking-longship-rolf-viking-river-cruises-CRUISEHISTORY0119-e2feae804e154ab197af0ae3c526a23e.jpg"
+          ],
+          "tags": [
+              {
+                  "price": 0,
+                  "name": "Family Friendly",
+                  "details": "Suitable for visitors of all ages, including children."
+              },
+              {
+                  "price": 20,
+                  "name": "Guided Tour",
+                  "details": "Includes a guided tour with detailed commentary on historical sites along the river."
+              },
+              {
+                  "price": 15,
+                  "name": "Evening Departure",
+                  "details": "Enjoy the city lights and a cooler atmosphere with our evening departure option."
+              }
+          ],
+          "relevantClients": []
+      }
+  ],
+  "tags": [
+      {
+          "price": 0,
+          "name": "Romantic",
+          "details": "Ideal for couples and honeymoons."
+      },
+      {
+          "price": 100,
+          "name": "Luxury",
+          "details": "High-end accommodations and exclusive services."
+      },
+      {
+          "price": 50,
+          "name": "City Tour",
+          "details": "Explore the city's top sights with a comprehensive guided tour."
+      }
+  ],
+  "images": [
+      "https://blog.247travels.com/wp-content/uploads/2022/06/Best-Time-to-Travel-to-Greece.jpg",
+      "https://www.libertytravel.com/sites/default/files/styles/full_size/public/Greece_hero.jpg?itok=QDbkI_A7"
+  ],
+  "relevantClients": [],
+  "__v": 0
+}
   ]
 }
+

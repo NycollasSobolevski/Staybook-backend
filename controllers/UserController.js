@@ -3,8 +3,7 @@ const jwt = require('jsonwebtoken');
 
 class UserController{
     static async Notify(req, res) {
-        const { userJwt } = req.params;
-        const { notification } = req.body;
+        const { notification, userJwt } = req.body;
     
         const secret = process.env.SECRET;
 
@@ -37,8 +36,7 @@ class UserController{
     }
 
     static async Purchase(req, res) {
-        const { userJwt } = req.params;
-        const { packages } = req.body;
+        const { packages, userJwt } = req.body;
         const secret = process.env.SECRET;
 
         if(!userJwt) 
@@ -49,23 +47,23 @@ class UserController{
             return res.status(400)
                 .send({ message: "One or more elements were not provided" })
 
-        var verifiedUser = userJwt.verify(userJwt, secret);
+        var verifiedUser = jwt.verify(userJwt, secret);
 
         try {
             const user = await User.findById(verifiedUser.id);
 
-            let updatedPurchases = user.purchases.concat(JSON.parse(packages))
+            let updatedPurchases = user.purchases.concat(packages)
             let unic = a => [...new Set(a)];
 
             updatedPurchases = unic(updatedPurchases);
 
-            await User.findByIdAndUpdate(id, {
+            await User.findByIdAndUpdate(verifiedUser.id, {
                 purchases: updatedPurchases
             });
     
             return res.status(200).send({ message: "Purchases updated successfully" });
         } catch (error) {
-            return res.status(500).send({ message: "Something failed" });
+            return res.status(500).send({ message: error });
         }
     }
 
