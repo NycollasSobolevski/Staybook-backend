@@ -260,3 +260,11 @@ http://localhost:8080/api/package
 
 get
 http://localhost:8080/api/package/id/65e6008454d5eda6a1c5c06b
+
+post
+http://localhost:8080/api/user/purchase
+{
+  [
+    Package
+  ]
+}
