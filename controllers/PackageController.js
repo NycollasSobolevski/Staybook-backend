@@ -4,7 +4,7 @@ class PackageController{
     static async CreatePackage(req, res) {
         const { title, details, price, bought, ticket, booking, attractions, tags, images, relevantClients } = req.body;
     
-        if (!title || !details || !price || !booking || !ticket) {
+        if (!title || !details || !price || !ticket) {
             return res.status(400).send({ message: "One or more elements were not provided" });
         }
     

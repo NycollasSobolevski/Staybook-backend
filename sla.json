@@ -1,34 +1,86 @@
+post
+http://localhost:8080/api/attraction/
 {
-    "alltickets":[
+"price": 120,
+"name": "Historic River Cruise",
+"details": "Explore the city's history through a relaxing river cruise. Discover landmarks and stories from the comfort of your boat.",
+"attractionLocal": {
+    "City": "River City",
+    "State": "Riverside",
+    "Country": "Countryview",
+    "Address": "Downtown Dock, River City"
+},
+"tags": [
+    {
+    "price": 0,
+    "name": "Family Friendly",
+    "details": "Suitable for visitors of all ages, including children."
+    },
+    {
+    "price": 20,
+    "name": "Guided Tour",
+    "details": "Includes a guided tour with detailed commentary on historical sites along the river."
+    },
+    {
+    "price": 15,
+    "name": "Evening Departure",
+    "details": "Enjoy the city lights and a cooler atmosphere with our evening departure option."
+    }
+],
+"image": ["https://th-thumbnailer.cdn-si-edu.com/EIDgCR9F70t0DQ-7LQXo63rd2SY=/1000x750/filters:no_upscale():focal(1981x1448:1982x1449)/https://tf-cmsv2-smithsonianmag-media.s3.amazonaws.com/filer_public/00/73/0073e734-8865-40ba-b291-7bf7d6cd8a0c/amakristina_fr_avignon.png", "https://www.travelandleisure.com/thmb/dxNuRGHjbsCkpHtq7xHFvnSyTmE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/viking-longship-rolf-viking-river-cruises-CRUISEHISTORY0119-e2feae804e154ab197af0ae3c526a23e.jpg"]
+}
+
+post
+http://localhost:8080/api/ticket/
+{
+    "price": 50,
+    "seat": "21B",
+    "type": "bus",
+    "title": "Express Service - Boston to Philadelphia",
+    "details": "Fast and comfortable express bus service from Boston to Philadelphia.",
+    "arrival": {
+        "City": "Philadelphia",
+        "State": "Pennsylvania",
+        "Country": "USA",
+        "Address": "Philadelphia Bus Terminal"
+    },
+    "departure": {
+        "City": "Boston",
+        "State": "Massachusetts",
+        "Country": "USA",
+        "Address": "Boston Bus Station"
+    },
+    "arrivalDate": "2024-03-20T19:00:00Z",
+    "departureDate": "2024-03-20T12:00:00Z",
+    "tags": [
         {
-            "details": "String",
-            "seat": "String",
-            "arrivalDate": "Date",
-            "departureDate": "Date",
-            "arrival": "String",
-            "departure": "String",
-            "tags": {
-                "type":["String"],
-                "required": "true"
-            },
-            "price": "Number",
-            "type": "String",
-            "title": "String"
+        "price": 10,
+        "name": "Window Seat",
+        "details": "Enjoy the view with a window seat."
         },
         {
-            "details": "String",
-            "seat": "100",
-            "arrivalDate": "10-05-2021",
-            "departureDate": "Date",
-            "arrival": "String",
-            "departure": "String",
-            "tags": {
-                "type":["String"],
-                "required": "true"
-            },
-            "price": "Number",
-            "type": "String",
-            "title": "String"
+        "price": 5,
+        "name": "USB Charging",
+        "details": "Each seat comes with a USB charging port."
         }
-    ]
+    ],
+    "roundTrip": "65de3dfec7bcd66bcab2f7bf"
 }
+
+patch
+http://localhost:8080/api/ticket/65d793bcf929a2b4603a32ba
+{
+    "price": 999999980,
+    "seat": "J10",
+    "type": "Economy",
+    "title": "Bike Rental",
+    "details": "Daily bike rental",
+    "arrival": "Copenhagen",
+    "departure": "Stockholm",
+    "arrivalDate": "2024-04-05T10:00:00Z",
+    "departureDate": "2024-04-05T08:00:00Z",
+    "tags": ["bike", "economy", "daily-rental"]
+}
+
+get
+http://localhost:8080/api/ticket/page=1&limit=4

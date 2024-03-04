@@ -46,7 +46,10 @@ class AuthController{
                 .send({ message: "User or password not provided" })
 
         try {
-            const user = await User.findOne({ userLogin })
+            let user = await User.findOne({ email: userLogin })
+
+            if (!user)
+                user = await User.findOne({ username: userLogin })
 
             if(!user)
                 return res.status(400).send({ message: "Invalid user" })
