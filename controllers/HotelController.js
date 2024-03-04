@@ -36,7 +36,7 @@ class HotelController {
     }
 
     static async GetHotelsWithPaginationAndTags(req, res) {
-        const { page, limit } = req.headers
+        const { page, limit } = req.params;
         const { tags } = req.body;
 
         const tagArray = tags.length < 1 ? [""] : tags;
@@ -76,7 +76,7 @@ class HotelController {
     }
 
     static async GetRange(req, res) {
-        const { page, limit } = req.headers
+        const { page, limit } = req.params
 
         if (!page || !limit)
             return res.status(400).send({ message: "Mandatory information not provided" });

@@ -59,8 +59,7 @@ class RoomController {
     }
 
     static async GetRange(req, res) {
-        const { start } = req.headers['start'];
-        const { end } = req.headers['end'];
+        const { start, end } = req.params;
         
         if (!start || !end)
             return res.status(400).send({ message: "Mandatory information not provided" });
@@ -75,7 +74,7 @@ class RoomController {
     }
 
     static async GetRoom(req, res) {
-        const { code } = req.headers['code'];
+        const { code } = req.params;
         
         if (!code)
             return res.status(400).send({ message: "Mandatory information not provided" });

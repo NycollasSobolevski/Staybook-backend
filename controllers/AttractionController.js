@@ -27,7 +27,7 @@ class AttractionController{
     }
 
     static async GetAttraction(req, res) {
-        const id = req.headers['id'];
+        const id = req.params;
 
         if (!id)
             return res.status(400).send({ message: "Mandatory information not provided" });
@@ -41,7 +41,7 @@ class AttractionController{
     }
 
     static async DeleteAttraction(req, res) {
-        const id = req.headers['id'];
+        const id = req.params;
     
         try {
             const attraction = await Attraction.findByIdAndDelete(id);
@@ -57,7 +57,7 @@ class AttractionController{
     }
 
     static async UpdateAttraction(req, res) {
-        const id = req.headers['id'];
+        const id = req.params;
         const { name, price, details, image, attractionLocal, tags, relevantClients } = req.body;
     
         try {

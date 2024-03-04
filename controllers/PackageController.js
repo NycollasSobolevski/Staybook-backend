@@ -72,9 +72,7 @@ class PackageController{
     }
 
     static async GetPackagesWithPaginationAndTags(req, res) {
-        const { page } = req.headers['page'];
-        const { limit } = req.headers['limit'];
-        const { tags } = req.headers['tags'];
+        const { page, limit, tags } = req.params;
         
         const tagArray = tags ? tags.split(",") : [];
     

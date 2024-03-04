@@ -33,7 +33,7 @@ class TagController{
     }
 
     static async UpdateTag(req, res) {
-        const { id } = req.headers['id'];
+        const { id } = req.params;
         const { name, price, details } = req.body;
     
         if (!name || !details || !price) {
