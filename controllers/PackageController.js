@@ -51,8 +51,7 @@ class PackageController{
     }
     
     static async GetPackagesWithPagination(req, res) {
-        const { page } = req.headers['page'];
-        const { limit } = req.headers['limit'];
+        const { page, limit } = req.params;
 
         try {
             const packs = await Package.find()
